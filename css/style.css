@@ -1,0 +1,118 @@
+/* small CSS Reset */
+* {
+    margin: 0;            
+    padding: 0;
+}
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+body {
+    background-color: mintcream;
+    color: #1a1f2b;
+    font-family: 'Open Sans', sans-serif;
+}
+h1, h2, h3 {
+    font-family: 'Gentium Book Basic', serif;
+    font-style: italic;
+    font-weight: bold;
+}
+header {
+    background-color: #30395c;
+    color: #efefef;
+}
+main {
+    background-color: #fff;
+    color: #1a1f2b;
+}
+aside {
+    background-color: #c2d2e5;
+    color: #1a1f2b;
+}
+footer {
+    background-color: #30395c;
+    color: #efefef;
+    align-items: center;
+    text-align: center;
+}
+footer i {
+    color: #efefef;
+}
+/* Global Version on big screens: 6 columns + 2 marginal column */
+.wrapper {
+    display: grid;
+    grid-template-columns: 1fr repeat(6, 180px) 1fr;
+    grid-template-rows: 50px 600px 110px;
+    grid-gap: 10px;
+    grid-template-areas: 
+        '. header header header header header header .'
+        '. nav main main main main aside .'
+        '. footer footer footer footer footer footer .';
+    padding: 10px;
+}
+nav ul {
+    display: flex;
+    flex-direction: column;
+}
+nav ul li {
+    list-style: none;
+    padding: 5px;
+}
+header {
+    grid-area: header;
+}
+nav {
+    grid-area: nav;
+}
+main {
+    grid-area: main;
+}
+.aside {
+    grid-area: aside;
+}
+footer {
+    grid-area: footer;
+}
+/* Desktop Version: 6 columns */
+@media screen and (max-width: 1180px) {
+    .wrapper {                
+        grid-template-columns: repeat(6, 1fr);
+        grid-template-rows: 50px 600px 110px;
+        grid-template-areas: 
+            'header header header header header header'
+            'nav main main main main aside'
+            'footer footer footer footer footer footer';
+    }
+}
+/* Tablet Version: 3 columns */
+@media screen and (max-width: 900px) {
+    .wrapper {                
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: 50px 50px 600px 110px;
+        grid-template-areas: 
+            'header header header'
+            'nav nav nav'
+            'main main aside'
+            'footer footer footer';
+    }
+    .nav ul {
+        flex-direction: row;
+        justify-content: center;
+    }
+}
+/* Mobile Version: 2 columns */
+@media screen and (max-width: 700px) {
+    .wrapper {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: 50px 600px 110px;
+        grid-template-areas: 
+            'header nav'
+            'main main'
+            'footer footer';
+    }
+    .hide-on-small {
+        display: none;
+    }
+    .nav ul {
+        display: none;
+    }
+}
